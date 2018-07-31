@@ -104,22 +104,10 @@ public class VPNProfileList extends ListFragment implements OnClickListener, Vpn
             final VpnProfile profile = (VpnProfile) getListAdapter().getItem(position);
 
             View titleview = v.findViewById(R.id.vpn_list_item_left);
-            titleview.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startOrStopVPN(profile);
-                }
-            });
+            titleview.setOnClickListener(v1 -> startOrStopVPN(profile));
 
             View settingsview = v.findViewById(R.id.quickedit_settings);
-            settingsview.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    editVPN(profile);
-
-                }
-            });
+            settingsview.setOnClickListener(v12 -> editVPN(profile));
 
             TextView subtitle = (TextView) v.findViewById(R.id.vpn_item_subtitle);
             if (profile.getUUIDString().equals(VpnStatus.getLastConnectedVPNProfile())) {

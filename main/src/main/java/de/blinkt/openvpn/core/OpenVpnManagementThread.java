@@ -202,6 +202,8 @@ public class OpenVpnManagementThread implements Runnable, OpenVPNManagement {
                 if (numbytesread == -1)
                     return;
 
+                // Log.v("-------->","read numbytesread="+numbytesread);
+
                 FileDescriptor[] fds = null;
                 try {
                     fds = mSocket.getAncillaryFileDescriptors();

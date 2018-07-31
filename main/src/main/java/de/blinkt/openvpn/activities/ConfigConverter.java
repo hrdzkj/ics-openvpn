@@ -734,8 +734,7 @@ public class ConfigConverter extends BaseActivity implements FileSelectCallback,
                     doImport(is);
                     if (mResult==null)
                         return -3;
-                } catch (FileNotFoundException |
-                        SecurityException se)
+                } catch (FileNotFoundException | SecurityException se)
 
                 {
                     log(R.string.import_content_resolve_error + ":" + se.getLocalizedMessage());
