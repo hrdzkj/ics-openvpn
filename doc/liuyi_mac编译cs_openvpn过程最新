@@ -1,0 +1,14 @@
+主要参照这个博客的注意问题来处理
+https://blog.csdn.net/lllkey/article/details/79555648
+按照步骤操作，遇到如下问题：
+遇到SDK问题，升级为android-28.
+遇到ndk问题，升级为ndk17
+
+
+CMake Error at /Users/grid/Library/Android/sdk/cmake/3.6.4111459/share/cmake-3.6/Modules/FindPackageHandleStandardArgs.cmake:148 (message):
+  Could NOT find SWIG (missing: SWIG_EXECUTABLE SWIG_DIR) (Required is at
+  least version "3.0")
+ 需要安装swig，最小版本3.0。 安装方法：https://blog.csdn.net/epubcn/article/details/73296379
+
+处理以上两个问题后编译正常。
+
