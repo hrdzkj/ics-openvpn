@@ -12,3 +12,21 @@ CMake Error at /Users/grid/Library/Android/sdk/cmake/3.6.4111459/share/cmake-3.6
 
 处理以上两个问题后编译正常。
 
+
+
+下载的问题：git clone 慢的解决办法 或者由于项目太大了导致下载不成功
+1) 修改hosts   https://blog.csdn.net/hzwwpgmwy/article/details/79043251
+2) 尝试加参数 --depth 1，表示只克隆最近一次commit
+git clone https://github.com/schwabe/ics-openvpn.git --depth 1
+depth相关： https://blog.csdn.net/hopingwhite/article/details/47343395
+https://blog.csdn.net/zerooffdate/article/details/79348925
+
+这6个字模块git submodule update 下载不成功，也可以用--depth 1单独下载之后再拷贝到main/src/main/cpp/ 下
+myMacShare:ics-openvpn grid$ git submodule init
+Submodule 'main/src/main/cpp/asio' (https://github.com/chriskohlhoff/asio) registered for path 'main/src/main/cpp/asio'
+Submodule 'main/src/main/cpp/lz4' (https://github.com/lz4/lz4.git) registered for path 'main/src/main/cpp/lz4'
+Submodule 'main/src/main/cpp/mbedtls' (https://github.com/ARMmbed/mbedtls.git) registered for path 'main/src/main/cpp/mbedtls'
+Submodule 'main/openssl' (https://github.com/schwabe/platform_external_openssl.git) registered for path 'main/src/main/cpp/openssl'
+Submodule 'main/openvpn' (https://github.com/schwabe/openvpn.git) registered for path 'main/src/main/cpp/openvpn'
+Submodule 'main/src/main/cpp/openvpn3' (https://github.com/schwabe/openvpn3.git) registered for path 'main/src/main/cpp/openvpn3'
+
