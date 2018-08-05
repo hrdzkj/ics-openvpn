@@ -1,0 +1,45 @@
+OpenVPN for Android 的源码。该应用实现了一个完全兼容OpenVPN服务器的SSL VPN客户端。
+http://www.infoq.com/cn/articles/book-android-vpn
+
+OpenVPNService
+包含一个可以匹配android.net.VpnService动作的intent filter，以允许系统绑定并控制这个服务.
+拥有BIND_VPN_SERVICE系统签名权限Œ，保证只有系统应用才能够绑定
+
+
+prepare()方法返回一个用于启动图9-10所示警告框的intent。这个对话框用来获取用户的许可并且保证在任何情况下，一个设备上只运行一个VPN连接。
+
+OpenVPNService－－－－构造一个虚拟网络接口（表现为文件描述符）
+ExternalOpenVPNService－－－用于向第三方应用输出OpenVPNService，这样第三方应用也可以启动openvpn
+OpenVPNStatusService--用于监听vpn的状态
+－－－－－以上三个运行于 android:process=":openvpn"进程－－－－－－－－－－－－－－－－－
+
+OpenVPNTileService －－－允许三方app可以添加自己的快速设定，到系统的下拉设定中，方便用户快速打开关闭某些功能.
+
+
+＊＊＊＊＊＊＊＊＊＊调用连接vpn
+
+    private void startVPN(VpnProfile profile) {
+
+        getPM().saveProfile(getActivity(), profile);
+
+        Intent intent = new Intent(getActivity(), LaunchVPN.class);
+        intent.putExtra(LaunchVPN.EXTRA_KEY, profile.getUUID().toString());
+        intent.setAction(Intent.ACTION_MAIN);
+        startActivity(intent);
+    }
+
+
+    构造vpn的配置 populateVpnList
+    Collection<VpnProfile> allvpn = getPM().getProfiles();
+
+
+
+
+
+    *******
+    Gradle project sync failed
+
+    尝试了网上很多种方法后都没有解决,不清楚是什么原因下载不来。
+    最后我手动更新了一下Gradle后能够正常运行。下面是我解决方法的过程。 
+    首先在网上下载一个gradle-3.3-all.zip的压缩包。点击Android Studio->Preferences->Gradle.
+    接下来把Use default gradle wrapper(recommand）改为Use local gradle distribution，并选择解压gradle-3.3-all.zip后你的文件见所在的路径。点击apply之后重启即可。
